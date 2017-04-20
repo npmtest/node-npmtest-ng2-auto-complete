@@ -1,0 +1,2741 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-ng2-auto-complete/node_modules/ng2-auto-complete/dist/ng2-auto-complete.umd.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-ng2-auto-complete">npmtest-ng2-auto-complete (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-ng2-auto-complete/node_modules/ng2-auto-complete/dist/ng2-auto-complete.umd.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">1.8% <small>(8 / 444)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">1.03% <small>(3 / 290)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">1.12% <small>(1 / 89)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">1.93% <small>(8 / 415)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-ng2-auto-complete/node_modules/ng2-auto-complete/dist/</a> &#187; ng2-auto-complete.umd.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840</td><td class="line-coverage"><span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function webpackUniversalModuleDefinition(root, factory) {
+	<span class="missing-if-branch" title="else path not taken" >E</span>if(typeof exports === 'object' &amp;&amp; typeof module === 'object')
+		module.exports = factory(require("@angular/core"), require("@angular/forms"), require("@angular/common"), require("@angular/http"), require("rxjs/add/operator/map"));
+	else <span class="cstat-no" title="statement not covered" >if(typeof define === 'function' &amp;&amp; define.amd)</span>
+<span class="cstat-no" title="statement not covered" >		define(["@angular/core", "@angular/forms", "@angular/common", "@angular/http", "rxjs/add/operator/map"], factory);</span>
+	else <span class="cstat-no" title="statement not covered" >if(typeof exports === 'object')</span>
+<span class="cstat-no" title="statement not covered" >		exports["ng2-auto-complete"] = factory(require("@angular/core"), require("@angular/forms"), require("@angular/common"), require("@angular/http"), require("rxjs/add/operator/map"));</span>
+	else
+<span class="cstat-no" title="statement not covered" >		root["ng2-auto-complete"] = factory(root["@angular/core"], root["@angular/forms"], root["@angular/common"], root["@angular/http"], root["rxjs/add/operator/map"]);</span>
+})(this, <span class="fstat-no" title="function not covered" >function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_8__) {</span>
+<span class="cstat-no" title="statement not covered" >return /******/ (<span class="fstat-no" title="function not covered" >function(modules) {</span> // webpackBootstrap</span>
+/******/ 	// The module cache
+/******/ 	<span class="cstat-no" title="statement not covered" >var installedModules = {};</span>
+/******/
+/******/ 	// The require function
+/******/ 	<span class="fstat-no" title="function not covered" >function __webpack_require__(moduleId) {</span>
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		<span class="cstat-no" title="statement not covered" >if(installedModules[moduleId])</span>
+/******/ 			<span class="cstat-no" title="statement not covered" >return installedModules[moduleId].exports;</span>
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		<span class="cstat-no" title="statement not covered" >var module = installedModules[moduleId] = {</span>
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		<span class="cstat-no" title="statement not covered" >modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);</span>
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		<span class="cstat-no" title="statement not covered" >module.l = true;</span>
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		<span class="cstat-no" title="statement not covered" >return module.exports;</span>
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	<span class="cstat-no" title="statement not covered" >__webpack_require__.m = modules;</span>
+/******/
+/******/ 	// expose the module cache
+/******/ 	<span class="cstat-no" title="statement not covered" >__webpack_require__.c = installedModules;</span>
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	<span class="cstat-no" title="statement not covered" >__webpack_require__.i = <span class="fstat-no" title="function not covered" >function(value) {</span> <span class="cstat-no" title="statement not covered" >return value; </span>};</span>
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	<span class="cstat-no" title="statement not covered" >__webpack_require__.d = <span class="fstat-no" title="function not covered" >function(exports, name, getter) {</span></span>
+/******/ 		<span class="cstat-no" title="statement not covered" >if(!__webpack_require__.o(exports, name)) {</span>
+/******/ 			<span class="cstat-no" title="statement not covered" >Object.defineProperty(exports, name, {</span>
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	<span class="cstat-no" title="statement not covered" >__webpack_require__.n = <span class="fstat-no" title="function not covered" >function(module) {</span></span>
+/******/ 		<span class="cstat-no" title="statement not covered" >var getter = module &amp;&amp; module.__esModule ?</span>
+/******/ 			<span class="fstat-no" title="function not covered" >function getDefault() {</span> <span class="cstat-no" title="statement not covered" >return module['default']; </span>} :
+/******/ 			<span class="fstat-no" title="function not covered" >function getModuleExports() {</span> <span class="cstat-no" title="statement not covered" >return module; </span>};
+/******/ 		<span class="cstat-no" title="statement not covered" >__webpack_require__.d(getter, 'a', getter);</span>
+/******/ 		<span class="cstat-no" title="statement not covered" >return getter;</span>
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	<span class="cstat-no" title="statement not covered" >__webpack_require__.o = <span class="fstat-no" title="function not covered" >function(object, property) {</span> <span class="cstat-no" title="statement not covered" >return Object.prototype.hasOwnProperty.call(object, property); </span>};</span>
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	<span class="cstat-no" title="statement not covered" >__webpack_require__.p = "";</span>
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	<span class="cstat-no" title="statement not covered" >return __webpack_require__(__webpack_require__.s = 9);</span>
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (<span class="fstat-no" title="function not covered" >function(module, exports) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >module.exports = __WEBPACK_EXTERNAL_MODULE_0__;</span>
+&nbsp;
+/***/ }),
+/* 1 */
+/***/ (<span class="fstat-no" title="function not covered" >function(module, exports, __webpack_require__) {</span>
+&nbsp;
+"use strict";
+&nbsp;
+<span class="cstat-no" title="statement not covered" >var __decorate = (this &amp;&amp; this.__decorate) || <span class="fstat-no" title="function not covered" >function (decorators, target, key, desc) {</span></span>
+<span class="cstat-no" title="statement not covered" >    var c = arguments.length, r = c &lt; 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;</span>
+<span class="cstat-no" title="statement not covered" >    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") <span class="cstat-no" title="statement not covered" >r = Reflect.decorate(decorators, target, key, desc);</span></span>
+    else <span class="cstat-no" title="statement not covered" >for (var i = decorators.length - 1; i &gt;= 0; i--) <span class="cstat-no" title="statement not covered" >if (d = decorators[i]) <span class="cstat-no" title="statement not covered" >r = (c &lt; 3 ? d(r) : c &gt; 3 ? d(target, key, r) : d(target, key)) || r;</span></span></span>
+<span class="cstat-no" title="statement not covered" >    return c &gt; 3 &amp;&amp; r &amp;&amp; Object.defineProperty(target, key, r), r;</span>
+};
+<span class="cstat-no" title="statement not covered" >var __metadata = (this &amp;&amp; this.__metadata) || <span class="fstat-no" title="function not covered" >function (k, v) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.metadata === "function") <span class="cstat-no" title="statement not covered" >return Reflect.metadata(k, v);</span></span>
+};
+<span class="cstat-no" title="statement not covered" >var core_1 = __webpack_require__(0);</span>
+<span class="cstat-no" title="statement not covered" >var ng2_auto_complete_1 = __webpack_require__(2);</span>
+/**
+ * show a selected date in monthly calendar
+ * Each filteredList item has the following property in addition to data itself
+ *   1. displayValue as string e.g. Allen Kim
+ *   2. dataValue as any e.g.
+ */
+<span class="cstat-no" title="statement not covered" >var Ng2AutoCompleteComponent = (<span class="fstat-no" title="function not covered" >function () {</span></span>
+    /**
+     * constructor
+     */
+<span class="fstat-no" title="function not covered" >    function Ng2AutoCompleteComponent(elementRef, autoComplete) {</span>
+<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+<span class="cstat-no" title="statement not covered" >        this.autoComplete = autoComplete;</span>
+<span class="cstat-no" title="statement not covered" >        this.minChars = 0;</span>
+<span class="cstat-no" title="statement not covered" >        this.loadingText = "Loading";</span>
+<span class="cstat-no" title="statement not covered" >        this.showInputTag = true;</span>
+<span class="cstat-no" title="statement not covered" >        this.showDropdownOnInit = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.tabToSelect = true;</span>
+<span class="cstat-no" title="statement not covered" >        this.matchFormatted = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.valueSelected = new core_1.EventEmitter();</span>
+<span class="cstat-no" title="statement not covered" >        this.dropdownVisible = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.isLoading = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.filteredList = [];</span>
+<span class="cstat-no" title="statement not covered" >        this.minCharsEntered = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.itemIndex = 0;</span>
+<span class="cstat-no" title="statement not covered" >        this.reloadListInDelay = <span class="fstat-no" title="function not covered" >function (evt) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var delayMs = _this.isSrcArr() ? 10 : 500;</span>
+<span class="cstat-no" title="statement not covered" >            var keyword = evt.target.value;</span>
+            // executing after user stopped typing
+<span class="cstat-no" title="statement not covered" >            _this.delay(<span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.reloadList(keyword); </span>}, delayMs);</span>
+        };
+<span class="cstat-no" title="statement not covered" >        this.inputElKeyHandler = <span class="fstat-no" title="function not covered" >function (evt) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var totalNumItem = _this.filteredList.length;</span>
+<span class="cstat-no" title="statement not covered" >            switch (evt.keyCode) {</span>
+                case 27:
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case 38:
+<span class="cstat-no" title="statement not covered" >                    _this.itemIndex = (totalNumItem + _this.itemIndex - 1) % totalNumItem;</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case 40:
+<span class="cstat-no" title="statement not covered" >                    _this.dropdownVisible = true;</span>
+<span class="cstat-no" title="statement not covered" >                    _this.itemIndex = (totalNumItem + _this.itemIndex + 1) % totalNumItem;</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case 13:
+<span class="cstat-no" title="statement not covered" >                    if (_this.filteredList.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                        _this.selectOne(_this.filteredList[_this.itemIndex]);</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    evt.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case 9:
+<span class="cstat-no" title="statement not covered" >                    if (_this.tabToSelect &amp;&amp; _this.filteredList.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                        _this.selectOne(_this.filteredList[_this.itemIndex]);</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+            }
+        };
+<span class="cstat-no" title="statement not covered" >        this.delay = (<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            var timer = 0;</span>
+<span class="cstat-no" title="statement not covered" >            return <span class="fstat-no" title="function not covered" >function (callback, ms) {</span></span>
+<span class="cstat-no" title="statement not covered" >                clearTimeout(timer);</span>
+<span class="cstat-no" title="statement not covered" >                timer = setTimeout(callback, ms);</span>
+            };
+        })();
+<span class="cstat-no" title="statement not covered" >        this.el = elementRef.nativeElement;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteComponent.prototype.isSrcArr = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return (this.source.constructor.name === "Array");</span>
+    };
+    /**
+     * user enters into input el, shows list to select, then select one
+     */
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteComponent.prototype.ngOnInit = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+<span class="cstat-no" title="statement not covered" >        this.autoComplete.source = this.source;</span>
+<span class="cstat-no" title="statement not covered" >        this.autoComplete.pathToData = this.pathToData;</span>
+<span class="cstat-no" title="statement not covered" >        this.autoComplete.listFormatter = this.listFormatter;</span>
+<span class="cstat-no" title="statement not covered" >        setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (_this.autoCompleteInput) {</span>
+<span class="cstat-no" title="statement not covered" >                _this.autoCompleteInput.nativeElement.focus();</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (_this.showDropdownOnInit) {</span>
+<span class="cstat-no" title="statement not covered" >                _this.showDropdownList({ target: { value: '' } });</span>
+            }
+        });
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteComponent.prototype.showDropdownList = <span class="fstat-no" title="function not covered" >function (event) {</span></span>
+<span class="cstat-no" title="statement not covered" >        this.dropdownVisible = true;</span>
+<span class="cstat-no" title="statement not covered" >        this.reloadList(event.target.value);</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteComponent.prototype.hideDropdownList = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        this.dropdownVisible = false;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteComponent.prototype.findItemFromSelectValue = <span class="fstat-no" title="function not covered" >function (selectText) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var matchingItems = this.filteredList</span>
+            .filter(<span class="fstat-no" title="function not covered" >function (item) {</span> <span class="cstat-no" title="statement not covered" >return ('' + item) === selectText; </span>});
+<span class="cstat-no" title="statement not covered" >        return matchingItems.length ? matchingItems[0] : null;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteComponent.prototype.reloadList = <span class="fstat-no" title="function not covered" >function (keyword) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+<span class="cstat-no" title="statement not covered" >        this.filteredList = [];</span>
+<span class="cstat-no" title="statement not covered" >        if (keyword.length &lt; (this.minChars || 0)) {</span>
+<span class="cstat-no" title="statement not covered" >            this.minCharsEntered = false;</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            this.minCharsEntered = true;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (this.isSrcArr()) {</span>
+<span class="cstat-no" title="statement not covered" >            this.isLoading = false;</span>
+<span class="cstat-no" title="statement not covered" >            this.filteredList = this.autoComplete.filter(this.source, keyword, this.matchFormatted);</span>
+<span class="cstat-no" title="statement not covered" >            if (this.maxNumList) {</span>
+<span class="cstat-no" title="statement not covered" >                this.filteredList = this.filteredList.slice(0, this.maxNumList);</span>
+            }
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            this.isLoading = true;</span>
+<span class="cstat-no" title="statement not covered" >            if (typeof this.source === "function") {</span>
+                // custom function that returns observable
+<span class="cstat-no" title="statement not covered" >                this.source(keyword).subscribe(<span class="fstat-no" title="function not covered" >function (resp) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    if (_this.pathToData) {</span>
+<span class="cstat-no" title="statement not covered" >                        var paths = _this.pathToData.split(".");</span>
+<span class="cstat-no" title="statement not covered" >                        paths.forEach(<span class="fstat-no" title="function not covered" >function (prop) {</span> <span class="cstat-no" title="statement not covered" >return resp = resp[prop]; </span>});</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    _this.filteredList = resp;</span>
+<span class="cstat-no" title="statement not covered" >                    if (_this.maxNumList) {</span>
+<span class="cstat-no" title="statement not covered" >                        _this.filteredList = _this.filteredList.slice(0, _this.maxNumList);</span>
+                    }
+                }, <span class="fstat-no" title="function not covered" >function (error) {</span> <span class="cstat-no" title="statement not covered" >return null; </span>}, <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.isLoading = false; </span>} // complete
+                );
+            }
+            else {
+                // remote source
+<span class="cstat-no" title="statement not covered" >                this.autoComplete.getRemoteData(keyword).subscribe(<span class="fstat-no" title="function not covered" >function (resp) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    _this.filteredList = resp;</span>
+<span class="cstat-no" title="statement not covered" >                    if (_this.maxNumList) {</span>
+<span class="cstat-no" title="statement not covered" >                        _this.filteredList = _this.filteredList.slice(0, _this.maxNumList);</span>
+                    }
+                }, <span class="fstat-no" title="function not covered" >function (error) {</span> <span class="cstat-no" title="statement not covered" >return null; </span>}, <span class="fstat-no" title="function not covered" >function () {</span> <span class="cstat-no" title="statement not covered" >return _this.isLoading = false; </span>} // complete
+                );
+            }
+        }
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteComponent.prototype.selectOne = <span class="fstat-no" title="function not covered" >function (data) {</span></span>
+<span class="cstat-no" title="statement not covered" >        this.valueSelected.emit(data);</span>
+    };
+    ;
+<span class="cstat-no" title="statement not covered" >    Object.defineProperty(Ng2AutoCompleteComponent.prototype, "emptyList", {</span>
+        get: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            return !(this.isLoading ||</span>
+                (this.minCharsEntered &amp;&amp; !this.isLoading &amp;&amp; !this.filteredList.length) ||
+                (this.filteredList.length));
+        },
+        enumerable: true,
+        configurable: true
+    });
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("list-formatter"), 
+        __metadata('design:type', Function)
+    ], Ng2AutoCompleteComponent.prototype, "listFormatter", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("source"), 
+        __metadata('design:type', Object)
+    ], Ng2AutoCompleteComponent.prototype, "source", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("path-to-data"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteComponent.prototype, "pathToData", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("min-chars"), 
+        __metadata('design:type', Number)
+    ], Ng2AutoCompleteComponent.prototype, "minChars", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("placeholder"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteComponent.prototype, "placeholder", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("blank-option-text"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteComponent.prototype, "blankOptionText", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("no-match-found-text"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteComponent.prototype, "noMatchFoundText", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("accept-user-input"), 
+        __metadata('design:type', Boolean)
+    ], Ng2AutoCompleteComponent.prototype, "acceptUserInput", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("loading-text"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteComponent.prototype, "loadingText", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("max-num-list"), 
+        __metadata('design:type', Number)
+    ], Ng2AutoCompleteComponent.prototype, "maxNumList", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("show-input-tag"), 
+        __metadata('design:type', Boolean)
+    ], Ng2AutoCompleteComponent.prototype, "showInputTag", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("show-dropdown-on-init"), 
+        __metadata('design:type', Boolean)
+    ], Ng2AutoCompleteComponent.prototype, "showDropdownOnInit", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("tab-to-select"), 
+        __metadata('design:type', Boolean)
+    ], Ng2AutoCompleteComponent.prototype, "tabToSelect", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("match-formatted"), 
+        __metadata('design:type', Boolean)
+    ], Ng2AutoCompleteComponent.prototype, "matchFormatted", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], Ng2AutoCompleteComponent.prototype, "valueSelected", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.ViewChild('autoCompleteInput'), 
+        __metadata('design:type', core_1.ElementRef)
+    ], Ng2AutoCompleteComponent.prototype, "autoCompleteInput", void 0);
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteComponent = __decorate([</span>
+        core_1.Component({
+            selector: "ng2-auto-complete",
+            template: "\n  &lt;div class=\"ng2-auto-complete\"&gt;\n\n    &lt;!-- keyword input --&gt;\n    &lt;input *ngIf=\"showInputTag\"\n           #autoCompleteInput class=\"keyword\"\n           placeholder=\"{{placeholder}}\"\n           (focus)=\"showDropdownList($event)\"\n           (blur)=\"hideDropdownList()\"\n           (keydown)=\"inputElKeyHandler($event)\"\n           (input)=\"reloadListInDelay($event)\"\n           [(ngModel)]=\"keyword\" /&gt;\n\n    &lt;!-- dropdown that user can select --&gt;\n    &lt;ul *ngIf=\"dropdownVisible\" [class.empty]=\"emptyList\"&gt;\n      &lt;li *ngIf=\"isLoading\" class=\"loading\"&gt;{{loadingText}}&lt;/li&gt;\n      &lt;li *ngIf=\"minCharsEntered &amp;&amp; !isLoading &amp;&amp; !filteredList.length\"\n           (mousedown)=\"selectOne('')\"\n           class=\"no-match-found\"&gt;{{noMatchFoundText || 'No Result Found'}}&lt;/li&gt;\n      &lt;li *ngIf=\"blankOptionText &amp;&amp; filteredList.length\"\n          (mousedown)=\"selectOne('')\"\n          class=\"blank-item\"&gt;{{blankOptionText}}&lt;/li&gt;\n      &lt;li class=\"item\"\n          *ngFor=\"let item of filteredList; let i=index\"\n          (mousedown)=\"selectOne(item)\"\n          [ngClass]=\"{selected: i === itemIndex}\"\n          [innerHtml]=\"autoComplete.getFormattedListItem(item)\"&gt;\n      &lt;/li&gt;\n    &lt;/ul&gt;\n\n  &lt;/div&gt;",
+            providers: [ng2_auto_complete_1.Ng2AutoComplete],
+            styles: ["\n  @keyframes slideDown {\n    0% {\n      transform:  translateY(-10px);\n    }\n    100% {\n      transform: translateY(0px);\n    }\n  }\n  .ng2-auto-complete {\n    background-color: transparent;\n  }\n  .ng2-auto-complete &gt; input {\n    outline: none;\n    border: 0;\n    padding: 2px; \n    box-sizing: border-box;\n    background-clip: content-box;\n  }\n\n  .ng2-auto-complete &gt; ul {\n    background-color: #fff;\n    margin: 0;\n    width : 100%;\n    overflow-y: auto;\n    list-style-type: none;\n    padding: 0;\n    border: 1px solid #ccc;\n    box-sizing: border-box;\n    animation: slideDown 0.1s;\n  }\n  .ng2-auto-complete &gt; ul.empty {\n    display: none;\n  }\n\n  .ng2-auto-complete &gt; ul li {\n    padding: 2px 5px;\n    border-bottom: 1px solid #eee;\n  }\n\n  .ng2-auto-complete &gt; ul li.selected {\n    background-color: #ccc;\n  }\n\n  .ng2-auto-complete &gt; ul li:last-child {\n    border-bottom: none;\n  }\n\n  .ng2-auto-complete &gt; ul li:hover {\n    background-color: #ccc;\n  }"
+            ],
+            encapsulation: core_1.ViewEncapsulation.None
+        }), 
+        __metadata('design:paramtypes', [core_1.ElementRef, ng2_auto_complete_1.Ng2AutoComplete])
+    ], Ng2AutoCompleteComponent);
+<span class="cstat-no" title="statement not covered" >    return Ng2AutoCompleteComponent;</span>
+}());
+<span class="cstat-no" title="statement not covered" >exports.Ng2AutoCompleteComponent = Ng2AutoCompleteComponent;</span>
+&nbsp;
+&nbsp;
+/***/ }),
+/* 2 */
+/***/ (<span class="fstat-no" title="function not covered" >function(module, exports, __webpack_require__) {</span>
+&nbsp;
+"use strict";
+&nbsp;
+<span class="cstat-no" title="statement not covered" >var __decorate = (this &amp;&amp; this.__decorate) || <span class="fstat-no" title="function not covered" >function (decorators, target, key, desc) {</span></span>
+<span class="cstat-no" title="statement not covered" >    var c = arguments.length, r = c &lt; 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;</span>
+<span class="cstat-no" title="statement not covered" >    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") <span class="cstat-no" title="statement not covered" >r = Reflect.decorate(decorators, target, key, desc);</span></span>
+    else <span class="cstat-no" title="statement not covered" >for (var i = decorators.length - 1; i &gt;= 0; i--) <span class="cstat-no" title="statement not covered" >if (d = decorators[i]) <span class="cstat-no" title="statement not covered" >r = (c &lt; 3 ? d(r) : c &gt; 3 ? d(target, key, r) : d(target, key)) || r;</span></span></span>
+<span class="cstat-no" title="statement not covered" >    return c &gt; 3 &amp;&amp; r &amp;&amp; Object.defineProperty(target, key, r), r;</span>
+};
+<span class="cstat-no" title="statement not covered" >var __metadata = (this &amp;&amp; this.__metadata) || <span class="fstat-no" title="function not covered" >function (k, v) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.metadata === "function") <span class="cstat-no" title="statement not covered" >return Reflect.metadata(k, v);</span></span>
+};
+<span class="cstat-no" title="statement not covered" >var __param = (this &amp;&amp; this.__param) || <span class="fstat-no" title="function not covered" >function (paramIndex, decorator) {</span></span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (target, key) {</span> <span class="cstat-no" title="statement not covered" >decorator(target, key, paramIndex); </span>}</span>
+};
+<span class="cstat-no" title="statement not covered" >var core_1 = __webpack_require__(0);</span>
+<span class="cstat-no" title="statement not covered" >var http_1 = __webpack_require__(7);</span>
+<span class="cstat-no" title="statement not covered" >__webpack_require__(8);</span>
+/**
+ * provides auto-complete related utility functions
+ */
+<span class="cstat-no" title="statement not covered" >var Ng2AutoComplete = (<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="fstat-no" title="function not covered" >    function Ng2AutoComplete(http) {</span>
+<span class="cstat-no" title="statement not covered" >        this.http = http;</span>
+        // ...
+    }
+<span class="cstat-no" title="statement not covered" >    Ng2AutoComplete.prototype.filter = <span class="fstat-no" title="function not covered" >function (list, keyword, matchFormatted) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+<span class="cstat-no" title="statement not covered" >        return list.filter(<span class="fstat-no" title="function not covered" >function (el) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var objStr = matchFormatted ? _this.getFormattedListItem(el).toLowerCase() : JSON.stringify(el).toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >            keyword = keyword.toLowerCase();</span>
+            //console.log(objStr, keyword, objStr.indexOf(keyword) !== -1);
+<span class="cstat-no" title="statement not covered" >            return objStr.indexOf(keyword) !== -1;</span>
+        });
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoComplete.prototype.getFormattedListItem = <span class="fstat-no" title="function not covered" >function (data) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var formatted;</span>
+<span class="cstat-no" title="statement not covered" >        var formatter = this.listFormatter || '(id) value';</span>
+<span class="cstat-no" title="statement not covered" >        if (typeof formatter === 'function') {</span>
+<span class="cstat-no" title="statement not covered" >            formatted = formatter.apply(this, [data]);</span>
+        }
+        else <span class="cstat-no" title="statement not covered" >if (typeof data !== 'object') {</span>
+<span class="cstat-no" title="statement not covered" >            formatted = data;</span>
+        }
+        else <span class="cstat-no" title="statement not covered" >if (typeof formatter === 'string') {</span>
+<span class="cstat-no" title="statement not covered" >            formatted = formatter;</span>
+<span class="cstat-no" title="statement not covered" >            var matches = formatter.match(/[a-zA-Z0-9_\$]+/g);</span>
+<span class="cstat-no" title="statement not covered" >            if (matches &amp;&amp; typeof data !== 'string') {</span>
+<span class="cstat-no" title="statement not covered" >                matches.forEach(<span class="fstat-no" title="function not covered" >function (key) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    formatted = formatted.replace(key, data[key]);</span>
+                });
+            }
+        }
+<span class="cstat-no" title="statement not covered" >        return formatted;</span>
+    };
+    /**
+     * return remote data from the given source and options, and data path
+     */
+<span class="cstat-no" title="statement not covered" >    Ng2AutoComplete.prototype.getRemoteData = <span class="fstat-no" title="function not covered" >function (keyword) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+<span class="cstat-no" title="statement not covered" >        if (typeof this.source !== 'string') {</span>
+<span class="cstat-no" title="statement not covered" >            throw "Invalid type of source, must be a string. e.g. http://www.google.com?q=:my_keyword";</span>
+        }
+        else <span class="cstat-no" title="statement not covered" >if (!this.http) {</span>
+<span class="cstat-no" title="statement not covered" >            throw "Http is required.";</span>
+        }
+<span class="cstat-no" title="statement not covered" >        var matches = this.source.match(/:[a-zA-Z_]+/);</span>
+<span class="cstat-no" title="statement not covered" >        if (matches === null) {</span>
+<span class="cstat-no" title="statement not covered" >            throw "Replacement word is missing.";</span>
+        }
+<span class="cstat-no" title="statement not covered" >        var replacementWord = matches[0];</span>
+<span class="cstat-no" title="statement not covered" >        var url = this.source.replace(replacementWord, keyword);</span>
+<span class="cstat-no" title="statement not covered" >        return this.http.get(url)</span>
+            .map(<span class="fstat-no" title="function not covered" >function (resp) {</span> <span class="cstat-no" title="statement not covered" >return resp.json(); </span>})
+            .map(<span class="fstat-no" title="function not covered" >function (resp) {</span>
+<span class="cstat-no" title="statement not covered" >            var list = resp.data || resp;</span>
+<span class="cstat-no" title="statement not covered" >            if (_this.pathToData) {</span>
+<span class="cstat-no" title="statement not covered" >                var paths = _this.pathToData.split(".");</span>
+<span class="cstat-no" title="statement not covered" >                paths.forEach(<span class="fstat-no" title="function not covered" >function (prop) {</span> <span class="cstat-no" title="statement not covered" >return list = list[prop]; </span>});</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return list;</span>
+        });
+    };
+    ;
+<span class="cstat-no" title="statement not covered" >    Ng2AutoComplete = __decorate([</span>
+        core_1.Injectable(),
+        __param(0, core_1.Optional()), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], Ng2AutoComplete);
+<span class="cstat-no" title="statement not covered" >    return Ng2AutoComplete;</span>
+}());
+<span class="cstat-no" title="statement not covered" >exports.Ng2AutoComplete = Ng2AutoComplete;</span>
+&nbsp;
+&nbsp;
+/***/ }),
+/* 3 */
+/***/ (<span class="fstat-no" title="function not covered" >function(module, exports, __webpack_require__) {</span>
+&nbsp;
+"use strict";
+&nbsp;
+<span class="cstat-no" title="statement not covered" >var __decorate = (this &amp;&amp; this.__decorate) || <span class="fstat-no" title="function not covered" >function (decorators, target, key, desc) {</span></span>
+<span class="cstat-no" title="statement not covered" >    var c = arguments.length, r = c &lt; 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;</span>
+<span class="cstat-no" title="statement not covered" >    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") <span class="cstat-no" title="statement not covered" >r = Reflect.decorate(decorators, target, key, desc);</span></span>
+    else <span class="cstat-no" title="statement not covered" >for (var i = decorators.length - 1; i &gt;= 0; i--) <span class="cstat-no" title="statement not covered" >if (d = decorators[i]) <span class="cstat-no" title="statement not covered" >r = (c &lt; 3 ? d(r) : c &gt; 3 ? d(target, key, r) : d(target, key)) || r;</span></span></span>
+<span class="cstat-no" title="statement not covered" >    return c &gt; 3 &amp;&amp; r &amp;&amp; Object.defineProperty(target, key, r), r;</span>
+};
+<span class="cstat-no" title="statement not covered" >var __metadata = (this &amp;&amp; this.__metadata) || <span class="fstat-no" title="function not covered" >function (k, v) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.metadata === "function") <span class="cstat-no" title="statement not covered" >return Reflect.metadata(k, v);</span></span>
+};
+<span class="cstat-no" title="statement not covered" >var __param = (this &amp;&amp; this.__param) || <span class="fstat-no" title="function not covered" >function (paramIndex, decorator) {</span></span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (target, key) {</span> <span class="cstat-no" title="statement not covered" >decorator(target, key, paramIndex); </span>}</span>
+};
+<span class="cstat-no" title="statement not covered" >var core_1 = __webpack_require__(0);</span>
+<span class="cstat-no" title="statement not covered" >var ng2_auto_complete_component_1 = __webpack_require__(1);</span>
+<span class="cstat-no" title="statement not covered" >var forms_1 = __webpack_require__(4);</span>
+/**
+ * display auto-complete section with input and dropdown list when it is clicked
+ */
+<span class="cstat-no" title="statement not covered" >var Ng2AutoCompleteDirective = (<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="fstat-no" title="function not covered" >    function Ng2AutoCompleteDirective(resolver, renderer, viewContainerRef, parentForm) {</span>
+<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+<span class="cstat-no" title="statement not covered" >        this.resolver = resolver;</span>
+<span class="cstat-no" title="statement not covered" >        this.renderer = renderer;</span>
+<span class="cstat-no" title="statement not covered" >        this.viewContainerRef = viewContainerRef;</span>
+<span class="cstat-no" title="statement not covered" >        this.parentForm = parentForm;</span>
+<span class="cstat-no" title="statement not covered" >        this.loadingText = "Loading";</span>
+<span class="cstat-no" title="statement not covered" >        this.tabToSelect = true;</span>
+<span class="cstat-no" title="statement not covered" >        this.matchFormatted = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.ngModelChange = new core_1.EventEmitter();</span>
+<span class="cstat-no" title="statement not covered" >        this.valueChanged = new core_1.EventEmitter();</span>
+        //show auto-complete list below the current element
+<span class="cstat-no" title="statement not covered" >        this.showAutoCompleteDropdown = <span class="fstat-no" title="function not covered" >function (event) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var factory = _this.resolver.resolveComponentFactory(ng2_auto_complete_component_1.Ng2AutoCompleteComponent);</span>
+<span class="cstat-no" title="statement not covered" >            _this.componentRef = _this.viewContainerRef.createComponent(factory);</span>
+<span class="cstat-no" title="statement not covered" >            var component = _this.componentRef.instance;</span>
+<span class="cstat-no" title="statement not covered" >            component.showInputTag = false; </span>//Do NOT display autocomplete input tag separately
+<span class="cstat-no" title="statement not covered" >            component.pathToData = _this.pathToData;</span>
+<span class="cstat-no" title="statement not covered" >            component.minChars = _this.minChars;</span>
+<span class="cstat-no" title="statement not covered" >            component.source = _this.source;</span>
+<span class="cstat-no" title="statement not covered" >            component.placeholder = _this.autoCompletePlaceholder;</span>
+<span class="cstat-no" title="statement not covered" >            component.acceptUserInput = _this.acceptUserInput;</span>
+<span class="cstat-no" title="statement not covered" >            component.maxNumList = parseInt(_this.maxNumList, 10);</span>
+<span class="cstat-no" title="statement not covered" >            component.loadingText = _this.loadingText;</span>
+<span class="cstat-no" title="statement not covered" >            component.listFormatter = _this.listFormatter;</span>
+<span class="cstat-no" title="statement not covered" >            component.blankOptionText = _this.blankOptionText;</span>
+<span class="cstat-no" title="statement not covered" >            component.noMatchFoundText = _this.noMatchFoundText;</span>
+<span class="cstat-no" title="statement not covered" >            component.tabToSelect = _this.tabToSelect;</span>
+<span class="cstat-no" title="statement not covered" >            component.matchFormatted = _this.matchFormatted;</span>
+<span class="cstat-no" title="statement not covered" >            component.valueSelected.subscribe(_this.selectNewValue);</span>
+<span class="cstat-no" title="statement not covered" >            _this.acDropdownEl = _this.componentRef.location.nativeElement;</span>
+<span class="cstat-no" title="statement not covered" >            _this.acDropdownEl.style.display = "none";</span>
+            // if this element is not an input tag, move dropdown after input tag
+            // so that it displays correctly
+<span class="cstat-no" title="statement not covered" >            if (_this.el.tagName !== "INPUT" &amp;&amp; _this.acDropdownEl) {</span>
+<span class="cstat-no" title="statement not covered" >                _this.inputEl.parentElement.insertBefore(_this.acDropdownEl, _this.inputEl.nextSibling);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            _this.revertValue = typeof _this.ngModel !== "undefined" ? _this.ngModel : _this.inputEl.value;</span>
+<span class="cstat-no" title="statement not covered" >            setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                component.reloadList(_this.inputEl.value);</span>
+<span class="cstat-no" title="statement not covered" >                _this.styleAutoCompleteDropdown();</span>
+<span class="cstat-no" title="statement not covered" >                component.dropdownVisible = true;</span>
+            });
+        };
+<span class="cstat-no" title="statement not covered" >        this.hideAutoCompleteDropdown = <span class="fstat-no" title="function not covered" >function (event) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (_this.componentRef) {</span>
+<span class="cstat-no" title="statement not covered" >                var currentItem = void 0;</span>
+<span class="cstat-no" title="statement not covered" >                var hasRevertValue = (typeof _this.revertValue !== "undefined");</span>
+<span class="cstat-no" title="statement not covered" >                if (_this.inputEl &amp;&amp; hasRevertValue &amp;&amp; _this.acceptUserInput === false) {</span>
+<span class="cstat-no" title="statement not covered" >                    currentItem = _this.componentRef.instance.findItemFromSelectValue(_this.inputEl.value);</span>
+                }
+<span class="cstat-no" title="statement not covered" >                _this.componentRef.destroy();</span>
+<span class="cstat-no" title="statement not covered" >                _this.componentRef = undefined;</span>
+<span class="cstat-no" title="statement not covered" >                if (_this.inputEl &amp;&amp;</span>
+                    hasRevertValue &amp;&amp;
+                    _this.acceptUserInput === false &amp;&amp;
+                    currentItem === null) {
+<span class="cstat-no" title="statement not covered" >                    _this.selectNewValue(_this.revertValue);</span>
+                }
+            }
+        };
+<span class="cstat-no" title="statement not covered" >        this.styleAutoCompleteDropdown = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (_this.componentRef) {</span>
+<span class="cstat-no" title="statement not covered" >                var component = _this.componentRef.instance;</span>
+                /* setting width/height auto complete */
+<span class="cstat-no" title="statement not covered" >                var thisElBCR = _this.el.getBoundingClientRect();</span>
+<span class="cstat-no" title="statement not covered" >                var thisInputElBCR = _this.inputEl.getBoundingClientRect();</span>
+<span class="cstat-no" title="statement not covered" >                var closeToBottom = thisInputElBCR.bottom + 100 &gt; window.innerHeight;</span>
+<span class="cstat-no" title="statement not covered" >                _this.acDropdownEl.style.width = thisInputElBCR.width + "px";</span>
+<span class="cstat-no" title="statement not covered" >                _this.acDropdownEl.style.position = "absolute";</span>
+<span class="cstat-no" title="statement not covered" >                _this.acDropdownEl.style.zIndex = "1";</span>
+<span class="cstat-no" title="statement not covered" >                _this.acDropdownEl.style.left = "0";</span>
+<span class="cstat-no" title="statement not covered" >                _this.acDropdownEl.style.display = "inline-block";</span>
+<span class="cstat-no" title="statement not covered" >                if (closeToBottom) {</span>
+<span class="cstat-no" title="statement not covered" >                    _this.acDropdownEl.style.bottom = thisInputElBCR.height + "px";</span>
+                }
+                else {
+<span class="cstat-no" title="statement not covered" >                    _this.acDropdownEl.style.top = thisInputElBCR.height + "px";</span>
+                }
+            }
+        };
+<span class="cstat-no" title="statement not covered" >        this.selectNewValue = <span class="fstat-no" title="function not covered" >function (item) {</span></span>
+            // make displayable value
+<span class="cstat-no" title="statement not covered" >            if (item &amp;&amp; typeof item === "object") {</span>
+<span class="cstat-no" title="statement not covered" >                item = _this.setToStringFunction(item);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            _this.inputEl &amp;&amp; (_this.inputEl.value = '' + item);</span>
+            // make return value
+<span class="cstat-no" title="statement not covered" >            var val = item;</span>
+<span class="cstat-no" title="statement not covered" >            if (_this.selectValueOf &amp;&amp; item[_this.selectValueOf]) {</span>
+<span class="cstat-no" title="statement not covered" >                val = item[_this.selectValueOf];</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if ((_this.parentForm &amp;&amp; _this.formControlName) || _this.extFormControl) {</span>
+<span class="cstat-no" title="statement not covered" >                if (!!val) {</span>
+<span class="cstat-no" title="statement not covered" >                    _this.formControl.patchValue(val);</span>
+                }
+            }
+<span class="cstat-no" title="statement not covered" >            (val !== _this.ngModel) &amp;&amp; _this.ngModelChange.emit(val);</span>
+<span class="cstat-no" title="statement not covered" >            _this.valueChanged.emit(val);</span>
+<span class="cstat-no" title="statement not covered" >            _this.hideAutoCompleteDropdown();</span>
+        };
+<span class="cstat-no" title="statement not covered" >        this.keydownEventHandler = <span class="fstat-no" title="function not covered" >function (evt) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (_this.componentRef) {</span>
+<span class="cstat-no" title="statement not covered" >                var component = _this.componentRef.instance;</span>
+<span class="cstat-no" title="statement not covered" >                component.inputElKeyHandler(evt);</span>
+            }
+        };
+<span class="cstat-no" title="statement not covered" >        this.inputEventHandler = <span class="fstat-no" title="function not covered" >function (evt) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (_this.componentRef) {</span>
+<span class="cstat-no" title="statement not covered" >                var component = _this.componentRef.instance;</span>
+<span class="cstat-no" title="statement not covered" >                component.dropdownVisible = true;</span>
+<span class="cstat-no" title="statement not covered" >                component.reloadListInDelay(evt);</span>
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                _this.showAutoCompleteDropdown();</span>
+            }
+        };
+<span class="cstat-no" title="statement not covered" >        this.el = this.viewContainerRef.element.nativeElement;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteDirective.prototype.ngOnInit = <span class="fstat-no" title="function not covered" >function () {</span></span>
+        // wrap this element with &lt;div class="ng2-auto-complete"&gt;
+<span class="cstat-no" title="statement not covered" >        this.wrapperEl = document.createElement("div");</span>
+<span class="cstat-no" title="statement not covered" >        this.wrapperEl.className = "ng2-auto-complete-wrapper";</span>
+<span class="cstat-no" title="statement not covered" >        this.wrapperEl.style.position = "relative";</span>
+<span class="cstat-no" title="statement not covered" >        this.el.parentElement.insertBefore(this.wrapperEl, this.el.nextSibling);</span>
+<span class="cstat-no" title="statement not covered" >        this.wrapperEl.appendChild(this.el);</span>
+        //Check if we were supplied with a [formControlName] and it is inside a [form]
+        //else check if we are supplied with a [FormControl] regardless if it is inside a [form] tag
+<span class="cstat-no" title="statement not covered" >        if (this.parentForm &amp;&amp; this.formControlName) {</span>
+<span class="cstat-no" title="statement not covered" >            if (this.parentForm['form']) {</span>
+<span class="cstat-no" title="statement not covered" >                this.formControl = this.parentForm['form'].get(this.formControlName);</span>
+            }
+            else <span class="cstat-no" title="statement not covered" >if (this.parentForm instanceof forms_1.FormGroupName) {</span>
+<span class="cstat-no" title="statement not covered" >                this.formControl = this.parentForm.control.controls[this.formControlName];</span>
+            }
+        }
+        else <span class="cstat-no" title="statement not covered" >if (this.extFormControl) {</span>
+<span class="cstat-no" title="statement not covered" >            this.formControl = this.extFormControl;</span>
+        }
+        // apply toString() method for the object
+<span class="cstat-no" title="statement not covered" >        if (!!this.ngModel) {</span>
+<span class="cstat-no" title="statement not covered" >            this.selectNewValue(this.ngModel);</span>
+        }
+        else <span class="cstat-no" title="statement not covered" >if (!!this.formControl &amp;&amp; this.formControl.value) {</span>
+<span class="cstat-no" title="statement not covered" >            this.selectNewValue(this.formControl.value[this.displayPropertyName]);</span>
+        }
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteDirective.prototype.ngAfterViewInit = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        var _this = this;</span>
+        // if this element is not an input tag, move dropdown after input tag
+        // so that it displays correctly
+<span class="cstat-no" title="statement not covered" >        this.inputEl = this.el.tagName === "INPUT" ?</span>
+            this.el : this.el.querySelector("input");
+<span class="cstat-no" title="statement not covered" >        this.inputEl.addEventListener('focus', <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.showAutoCompleteDropdown(e); </span>});</span>
+<span class="cstat-no" title="statement not covered" >        this.inputEl.addEventListener('blur', <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.hideAutoCompleteDropdown(e); </span>});</span>
+<span class="cstat-no" title="statement not covered" >        this.inputEl.addEventListener('keydown', <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.keydownEventHandler(e); </span>});</span>
+<span class="cstat-no" title="statement not covered" >        this.inputEl.addEventListener('input', <span class="fstat-no" title="function not covered" >function (e) {</span> <span class="cstat-no" title="statement not covered" >return _this.inputEventHandler(e); </span>});</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteDirective.prototype.ngOnDestroy = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (this.componentRef) {</span>
+<span class="cstat-no" title="statement not covered" >            this.componentRef.instance.valueSelected.unsubscribe();</span>
+        }
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteDirective.prototype.ngOnChanges = <span class="fstat-no" title="function not covered" >function (changes) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (changes['ngModel']) {</span>
+<span class="cstat-no" title="statement not covered" >            this.ngModel = this.setToStringFunction(changes['ngModel'].currentValue);</span>
+        }
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteDirective.prototype.setToStringFunction = <span class="fstat-no" title="function not covered" >function (item) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (item &amp;&amp; typeof item === "object") {</span>
+<span class="cstat-no" title="statement not covered" >            var displayVal_1;</span>
+<span class="cstat-no" title="statement not covered" >            if (typeof this.valueFormatter === 'string') {</span>
+<span class="cstat-no" title="statement not covered" >                var matches = this.valueFormatter.match(/[a-zA-Z0-9_\$]+/g);</span>
+<span class="cstat-no" title="statement not covered" >                var formatted_1 = this.valueFormatter;</span>
+<span class="cstat-no" title="statement not covered" >                if (matches &amp;&amp; typeof item !== 'string') {</span>
+<span class="cstat-no" title="statement not covered" >                    matches.forEach(<span class="fstat-no" title="function not covered" >function (key) {</span></span>
+<span class="cstat-no" title="statement not covered" >                        formatted_1 = formatted_1.replace(key, item[key]);</span>
+                    });
+                }
+<span class="cstat-no" title="statement not covered" >                displayVal_1 = formatted_1;</span>
+            }
+            else <span class="cstat-no" title="statement not covered" >if (typeof this.valueFormatter === 'function') {</span>
+<span class="cstat-no" title="statement not covered" >                displayVal_1 = this.valueFormatter(item);</span>
+            }
+            else <span class="cstat-no" title="statement not covered" >if (this.displayPropertyName) {</span>
+<span class="cstat-no" title="statement not covered" >                displayVal_1 = item[this.displayPropertyName];</span>
+            }
+            else <span class="cstat-no" title="statement not covered" >if (typeof this.listFormatter === 'string' &amp;&amp; this.listFormatter.match(/^\w+$/)) {</span>
+<span class="cstat-no" title="statement not covered" >                displayVal_1 = item[this.listFormatter];</span>
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                displayVal_1 = item.value;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            item.toString = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                return displayVal_1;</span>
+            };
+        }
+<span class="cstat-no" title="statement not covered" >        return item;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("auto-complete-placeholder"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteDirective.prototype, "autoCompletePlaceholder", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("source"), 
+        __metadata('design:type', Object)
+    ], Ng2AutoCompleteDirective.prototype, "source", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("path-to-data"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteDirective.prototype, "pathToData", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("min-chars"), 
+        __metadata('design:type', Number)
+    ], Ng2AutoCompleteDirective.prototype, "minChars", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("display-property-name"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteDirective.prototype, "displayPropertyName", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("accept-user-input"), 
+        __metadata('design:type', Boolean)
+    ], Ng2AutoCompleteDirective.prototype, "acceptUserInput", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("max-num-list"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteDirective.prototype, "maxNumList", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("select-value-of"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteDirective.prototype, "selectValueOf", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("list-formatter"), 
+        __metadata('design:type', Object)
+    ], Ng2AutoCompleteDirective.prototype, "listFormatter", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("loading-text"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteDirective.prototype, "loadingText", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("blank-option-text"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteDirective.prototype, "blankOptionText", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("no-match-found-text"), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteDirective.prototype, "noMatchFoundText", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("value-formatter"), 
+        __metadata('design:type', Object)
+    ], Ng2AutoCompleteDirective.prototype, "valueFormatter", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("tab-to-select"), 
+        __metadata('design:type', Boolean)
+    ], Ng2AutoCompleteDirective.prototype, "tabToSelect", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input("match-formatted"), 
+        __metadata('design:type', Boolean)
+    ], Ng2AutoCompleteDirective.prototype, "matchFormatted", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteDirective.prototype, "ngModel", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input('formControlName'), 
+        __metadata('design:type', String)
+    ], Ng2AutoCompleteDirective.prototype, "formControlName", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Input('formControl'), 
+        __metadata('design:type', forms_1.FormControl)
+    ], Ng2AutoCompleteDirective.prototype, "extFormControl", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], Ng2AutoCompleteDirective.prototype, "ngModelChange", void 0);
+<span class="cstat-no" title="statement not covered" >    __decorate([</span>
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], Ng2AutoCompleteDirective.prototype, "valueChanged", void 0);
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteDirective = __decorate([</span>
+        core_1.Directive({
+            selector: "[auto-complete], [ng2-auto-complete]"
+        }),
+        __param(3, core_1.Optional()),
+        __param(3, core_1.Host()),
+        __param(3, core_1.SkipSelf()), 
+        __metadata('design:paramtypes', [core_1.ComponentFactoryResolver, core_1.Renderer, core_1.ViewContainerRef, forms_1.ControlContainer])
+    ], Ng2AutoCompleteDirective);
+<span class="cstat-no" title="statement not covered" >    return Ng2AutoCompleteDirective;</span>
+}());
+<span class="cstat-no" title="statement not covered" >exports.Ng2AutoCompleteDirective = Ng2AutoCompleteDirective;</span>
+&nbsp;
+&nbsp;
+/***/ }),
+/* 4 */
+/***/ (<span class="fstat-no" title="function not covered" >function(module, exports) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >module.exports = __WEBPACK_EXTERNAL_MODULE_4__;</span>
+&nbsp;
+/***/ }),
+/* 5 */
+/***/ (<span class="fstat-no" title="function not covered" >function(module, exports, __webpack_require__) {</span>
+&nbsp;
+"use strict";
+&nbsp;
+<span class="cstat-no" title="statement not covered" >var __decorate = (this &amp;&amp; this.__decorate) || <span class="fstat-no" title="function not covered" >function (decorators, target, key, desc) {</span></span>
+<span class="cstat-no" title="statement not covered" >    var c = arguments.length, r = c &lt; 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;</span>
+<span class="cstat-no" title="statement not covered" >    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") <span class="cstat-no" title="statement not covered" >r = Reflect.decorate(decorators, target, key, desc);</span></span>
+    else <span class="cstat-no" title="statement not covered" >for (var i = decorators.length - 1; i &gt;= 0; i--) <span class="cstat-no" title="statement not covered" >if (d = decorators[i]) <span class="cstat-no" title="statement not covered" >r = (c &lt; 3 ? d(r) : c &gt; 3 ? d(target, key, r) : d(target, key)) || r;</span></span></span>
+<span class="cstat-no" title="statement not covered" >    return c &gt; 3 &amp;&amp; r &amp;&amp; Object.defineProperty(target, key, r), r;</span>
+};
+<span class="cstat-no" title="statement not covered" >var __metadata = (this &amp;&amp; this.__metadata) || <span class="fstat-no" title="function not covered" >function (k, v) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.metadata === "function") <span class="cstat-no" title="statement not covered" >return Reflect.metadata(k, v);</span></span>
+};
+<span class="cstat-no" title="statement not covered" >var core_1 = __webpack_require__(0);</span>
+<span class="cstat-no" title="statement not covered" >var common_1 = __webpack_require__(6);</span>
+<span class="cstat-no" title="statement not covered" >var forms_1 = __webpack_require__(4);</span>
+<span class="cstat-no" title="statement not covered" >var ng2_auto_complete_component_1 = __webpack_require__(1);</span>
+<span class="cstat-no" title="statement not covered" >var ng2_auto_complete_directive_1 = __webpack_require__(3);</span>
+<span class="cstat-no" title="statement not covered" >var ng2_auto_complete_1 = __webpack_require__(2);</span>
+<span class="cstat-no" title="statement not covered" >var Ng2AutoCompleteModule = (<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="fstat-no" title="function not covered" >    function Ng2AutoCompleteModule() {</span>
+    }
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteModule.forRoot = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            ngModule: Ng2AutoCompleteModule,
+            providers: [ng2_auto_complete_1.Ng2AutoComplete]
+        };
+    };
+<span class="cstat-no" title="statement not covered" >    Ng2AutoCompleteModule = __decorate([</span>
+        core_1.NgModule({
+            imports: [common_1.CommonModule, forms_1.FormsModule],
+            declarations: [ng2_auto_complete_component_1.Ng2AutoCompleteComponent, ng2_auto_complete_directive_1.Ng2AutoCompleteDirective],
+            exports: [ng2_auto_complete_component_1.Ng2AutoCompleteComponent, ng2_auto_complete_directive_1.Ng2AutoCompleteDirective],
+            entryComponents: [ng2_auto_complete_component_1.Ng2AutoCompleteComponent]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], Ng2AutoCompleteModule);
+<span class="cstat-no" title="statement not covered" >    return Ng2AutoCompleteModule;</span>
+}());
+<span class="cstat-no" title="statement not covered" >exports.Ng2AutoCompleteModule = Ng2AutoCompleteModule;</span>
+&nbsp;
+&nbsp;
+/***/ }),
+/* 6 */
+/***/ (<span class="fstat-no" title="function not covered" >function(module, exports) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >module.exports = __WEBPACK_EXTERNAL_MODULE_6__;</span>
+&nbsp;
+/***/ }),
+/* 7 */
+/***/ (<span class="fstat-no" title="function not covered" >function(module, exports) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >module.exports = __WEBPACK_EXTERNAL_MODULE_7__;</span>
+&nbsp;
+/***/ }),
+/* 8 */
+/***/ (<span class="fstat-no" title="function not covered" >function(module, exports) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >module.exports = __WEBPACK_EXTERNAL_MODULE_8__;</span>
+&nbsp;
+/***/ }),
+/* 9 */
+/***/ (<span class="fstat-no" title="function not covered" >function(module, exports, __webpack_require__) {</span>
+&nbsp;
+"use strict";
+&nbsp;
+<span class="cstat-no" title="statement not covered" >var ng2_auto_complete_1 = __webpack_require__(2);</span>
+<span class="cstat-no" title="statement not covered" >exports.Ng2AutoComplete = ng2_auto_complete_1.Ng2AutoComplete;</span>
+<span class="cstat-no" title="statement not covered" >var ng2_auto_complete_module_1 = __webpack_require__(5);</span>
+<span class="cstat-no" title="statement not covered" >exports.Ng2AutoCompleteModule = ng2_auto_complete_module_1.Ng2AutoCompleteModule;</span>
+<span class="cstat-no" title="statement not covered" >var ng2_auto_complete_component_1 = __webpack_require__(1);</span>
+<span class="cstat-no" title="statement not covered" >exports.Ng2AutoCompleteComponent = ng2_auto_complete_component_1.Ng2AutoCompleteComponent;</span>
+<span class="cstat-no" title="statement not covered" >var ng2_auto_complete_directive_1 = __webpack_require__(3);</span>
+<span class="cstat-no" title="statement not covered" >exports.Ng2AutoCompleteDirective = ng2_auto_complete_directive_1.Ng2AutoCompleteDirective;</span>
+&nbsp;
+&nbsp;
+/***/ })
+/******/ ]);
+});
+//# sourceMappingURL=ng2-auto-complete.umd.js.map
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Thu Apr 20 2017 15:54:33 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
